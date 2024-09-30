@@ -1,0 +1,6 @@
+@MovieReviewSystem_HostAddress = http://localhost:5014
+
+GET {{MovieReviewSystem_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
