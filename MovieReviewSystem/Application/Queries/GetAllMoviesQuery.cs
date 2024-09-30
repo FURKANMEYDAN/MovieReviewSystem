@@ -1,5 +1,5 @@
 using MediatR;
-using FilmReviewSystem.Models;
+using MoviReviewSystem.Models;
 
 namespace FilmReviewSystem.Application.Queries
 
@@ -8,10 +8,18 @@ namespace FilmReviewSystem.Application.Queries
     {
 
     }   
-    public class GetAllMoviesQueryHandler : IRequestHandler<GetAllMoviesQuery, List<Movie>>
+    public class GetAllMoviesQueryHandler : IRequestHandler<GetAllMoviesQuery, List<Movie>>)
      {
-        
-        return await _movieRepository.GetAllMoviesAsync();
+        private readonly IMovieRepository _movieRepository;
+        public GetAllMoviesQueryHandler(IMovieRepository movieRepository)
+        {
+            _movieRepository = movieRepository;
+        }
+        public async Task<List<Movie>> Handle(GetAllMoviesQuery request ,CancellationToken cancellationToken)
+        {
+
+            return await _movieRepository.GetAllMoviesAsync();
+        }
 
      }
 
